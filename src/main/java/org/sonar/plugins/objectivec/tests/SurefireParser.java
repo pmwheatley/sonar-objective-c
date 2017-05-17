@@ -164,8 +164,10 @@ public class SurefireParser {
     private void saveClassMeasure(SensorContext context, TestSuiteReport fileReport, Metric metric, double value) {
 
         if ( !Double.isNaN(value)) {
-
-            context.saveMeasure(getUnitTestResource(fileReport.getClassKey()), metric, value);
+            
+            if (getUnitTestResource(fileReport.getClassKey()) != null) {
+                context.saveMeasure(getUnitTestResource(fileReport.getClassKey()), metric, value);
+            }
 
         }
 
